@@ -331,12 +331,15 @@ INPUT /usr/share/texmf/fonts/tfm/arphic/gbsnu/gbsnu59.tfm
 INPUT /usr/share/texmf/fonts/tfm/arphic/gbsnu/gbsnu67.tfm
 INPUT /usr/share/texmf/fonts/tfm/arphic/gbsnu/gbsnu91.tfm
 INPUT /usr/share/texmf/fonts/tfm/arphic/gbsnu/gbsnu5e.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/tex-gyre/ec-qtmr.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/tex-gyre/ec-qhvr.tfm
 INPUT /usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd
 INPUT /usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd
 INPUT /usr/share/texmf/fonts/tfm/public/tex-gyre/ts1-qtmr.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/t1xbtt.tfm
+INPUT ocp.ind
+INPUT ocp.ind
 INPUT /usr/share/texmf/fonts/tfm/public/tex-gyre/ec-qtmri.tfm
-INPUT ocp.ind
-INPUT ocp.ind
 INPUT ocp.aux
 INPUT ./ocp.out
 INPUT ./ocp.out
@@ -373,3 +376,5 @@ INPUT /usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb
 INPUT /usr/share/texmf/fonts/type1/public/tex-gyre/qtmb.pfb
 INPUT /usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb
 INPUT /usr/share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
