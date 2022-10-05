@@ -1,0 +1,162 @@
+热传导方程
+===================
+
+偏微分方程和初始/边界条件
+-------------------------
+
+
+偏微分方程定义为
+
+.. math::
+   :label: eq:1.1.2:1
+
+   u_t - \Delta u = f \qquad \mathrm{in}\ \Omega\times\mathrm R_+\,.
+
+Dirichlet和Neumann边界条件定义为
+   
+.. math::
+   :label: eq:1.1.2:2
+		   
+   u &= g_{\uD} &\mathrm{on}\ \Gamma_{\uD}\times\mathrm R_+\,,
+	  
+   \partial_{\mathbf n}u & = g_{\uN} &\mathrm{on}\ \Gamma_{\uN}\times\mathrm R_+\,.
+
+初始条件定义为
+
+.. math::
+   :label: eq:1.1.2:3
+		   
+   u(\cdot,0) = v \qquad \mathrm{in}\ \Omega\,.
+
+
+变分形式
+------------------
+
+Find :math:`u\in H^1_g` such that
+
+.. math::
+   :label: eq:1.1.2:4
+   
+   (u_t,\varphi) + a(u,\varphi)=(f,\varphi) \qquad \forall \varphi\in H^1_0, t>0\,.
+
+
+有限元离散形式
+-------------------------
+
+Find :math:`u_h\in S_{h,g}` such that
+
+.. math::
+   :label: eq:1.1.2:5
+
+   (u_{h,t},\chi) + a(u_h,\chi)=(f,\chi) \qquad \forall \chi\in S_{h,0}, t>0\,.
+
+对时间进行离散
+
+.. math::
+
+   \overline\partial_t U^n = \frac{U^n - U^{n-1}}{k}\,.
+
+Find :math:`U^n\in S_{h,g}` such that
+
+.. math::
+   :label: eq:1.1.2:6
+
+   \left(\frac{U^n - U^{n-1}}{k},\chi\right) + a(U^n,\chi)=(f^n,\chi) \qquad \forall \chi\in S_{h,0}
+
+.. math::
+
+   \left(U^n,\chi\right) + ka(U^n,\chi)=(kf^n,\chi) + \left(U^{n-1},\chi\right)
+
+
+线性代数方程组
+------------------
+
+
+.. math::
+   :label: eq:1.1.2:7
+   
+   Ax = b
+
+算例
+---------------------------
+
+混合边界条件，二维
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+已知条件如下：
+
+.. math::
+   
+   &u=\mathrm e^t \mathrm e^{x_1+x_2}\,,\\
+   &\Omega:=(0,1)^2\,,\\
+   &\Gamma_{\uD}:=\{x|x_1=0\}\bigcup\{x|x_2=0\}\,,\\
+   &\Gamma_{\uN}:=\Gamma\setminus\Gamma_{\uD}\,, \\
+   &g_{\uD}=\mathrm e^t \mathrm e^{x_1+x_2}\,,\\
+   &g_{\uN}=\mathrm e^t \mathrm e^{x_1+x_2}\,,\\
+   &f=-\mathrm e^t \mathrm e^{x_1+x_2}\,,\\
+   &v=\mathrm e^{x_1+x_2}\,.
+   
+:numref:`tab:1.1.2:1` 是收敛速度验证， :numref:`fig-1.1.2-1` 是level 8的结果图。
+
+.. table:: the Heat equation, mixed b.c., 2D, :math:`T=0.5`
+   :widths: auto
+   :name: tab:1.1.2:1
+
+   ============== ============== ==============  ==============
+   level          dof            error           roc
+   ============== ============== ==============  ==============
+	3,7            145           0.007936        3.891003024
+    4,9            545           0.0019999       3.96819841
+    5,11           2113          0.00050099      3.991896046
+    6,13           8321          0.0001253       3.998324022
+   ============== ============== ==============  ============== 
+   
+.. _fig-1.1.2-1:
+
+.. figure:: ../../images/fig:1.1.2:1.png
+   :alt: Logo
+   :align: center
+   :height: 150px
+
+   the Heat equation, mixed b.c., 2D, :math:`T=0.5`
+
+
+混合边界条件，三维
+^^^^^^^^^^^^^^^^^^^^^^^
+
+已知条件如下：
+
+.. math::
+   
+   &u=\mathrm e^t\mathrm e^{x_1+x_2+x_3}\,,\\
+   &\Omega:=(0,1)^3\,,\\
+   &\Gamma_{\uD}:=\{x|x_1=0\}\bigcup\{x|x_2=0\}\bigcup\{x|x_3=0\}\,,\\
+   &\Gamma_{\uN}:=\Gamma\setminus\Gamma_{\uD}\,, \\
+   &g_{\uD}=\mathrm e^t\mathrm e^{x_1+x_2+x_3}\,,\\
+   &g_{\uN}=\mathrm e^t\mathrm e^{x_1+x_2+x_3}\,,\\
+   &f=-2\mathrm e^t\mathrm e^{x_1+x_2+x_3}\,,\\
+   &v=\mathrm e^{x_1+x_2+x_3}\,.
+   
+:numref:`tab:1.1.2:2` 是收敛速度验证， :numref:`fig-1.1.2-2` 是level 6的结果图。
+
+.. table:: the Heat equation, mixed b.c., 3D, :math:`T=0.5`
+   :widths: auto
+   :name: tab:1.1.2:2
+
+   ============== ============== ==============  ==============
+   level          dof            error           roc
+   ============== ============== ==============  ==============
+	  2,5         369            0.062935
+      3,7         2465           0.016651        3.779652874
+      4,9         17985          0.0042227       3.943211689
+      5,11        137345         0.0010577       3.992341874
+   ============== ============== ==============  ============== 
+
+.. _fig-1.1.2-2:
+
+.. figure:: ../../images/fig:1.1.2:2.png
+   :alt: Logo
+   :align: center
+   :height: 150px
+
+   the Heat equation, mixed b.c., 3D, :math:`T=0.5`

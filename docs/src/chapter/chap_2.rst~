@@ -1,0 +1,822 @@
+弹性方程
+==========================
+
+
+守恒定律
+--------------------
+
+张量运算
+^^^^^^^^^^
+
+The dyadic product:
+
+.. math::
+   
+   \mathbf a \otimes \mathbf b = \left(\begin{array}{ccc}
+   \mathbf a_1\mathbf b_1 & \mathbf a_1\mathbf b_2& \mathbf a_1\mathbf b_3 \\
+   \mathbf a_2\mathbf b_1 & \mathbf a_2\mathbf b_2& \mathbf a_2\mathbf b_3 \\
+   \mathbf a_3\mathbf b_1 & \mathbf a_3\mathbf b_2& \mathbf a_3\mathbf b_3 
+   \end{array}\right)
+
+The double contraction:
+
+.. math::
+   
+  \mathbf A : \mathbf B = \mathbf A_{ij}\mathbf B_{ij}
+
+.. math::
+	 
+   \mathbb A : \mathbf B = \mathsf A_{ijkl}\mathbf B_{kl}\mathbf e_i\otimes\mathbf e_j
+
+.. math::
+   
+   \mathrm{trace}(\mathrm{dev}(A)) 
+   = \mathrm{trace}\left(\begin{array}{ccc} A_{00}-\frac{1}{3}\sum_iA_{ii} & A_{01} & A_{02}\\
+   A_{10} & A_{11}-\frac{1}{3}\sum_iA_{ii} & A_{12}\\
+   A_{20} & A_{21} & A_{22}-\frac{1}{3}\sum_iA_{ii} \\
+   \end{array}\right) = 0
+
+.. math::
+   
+  \mathrm{dev}(\mathrm{trace}(A)\mathbf I) = \mathrm{dev}\left(\begin{array}{ccc} \sum_iA_{ii} & 0 & 0\\
+    0 & \sum_iA_{ii} & 0\\
+     0 & 0 & \sum_iA_{ii} \\
+  \end{array}\right) = 0
+
+
+应力张量定义（Cauchy四面体）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+更多细节见 :cite:`AsaroLubarda` 第93页。首先介绍Cauchy四面体定义应力张量，如图 :numref:`fig-1.2-1` 。
+
+.. _fig-1.2-1:
+
+.. figure:: ../../images/fig:1.2:1.png
+   :alt: Logo
+   :align: center
+   :height: 150px
+
+   Cauchy四面体
+
+:math:`\mathbf e_1=(1,0,0),\mathbf e_2=(0,1,0),\mathbf e_3=(0,0,1)` , :math:`a_1,a_2,a_3` 分别是三角形BOC、AOC和AOB的面积， :math:`\mathbf T_{\mathbf e_1^{-}},\mathbf T_{\mathbf e_2^{-}},\mathbf T_{\mathbf e_3^{-}}` 分别是三角形BOC、AOC和AOB上的面力， :math:`\mathbf n` 是面ABC上的法向向量， :math:`a_{\mathbf n}` 是三角形ABC的面积， :math:`\mathbf T_{\mathbf n}` 是三角形ABC上的面力， :math:`v` 是四面体体积， :math:`\mathbf b` 是体力密度， :math:`\epsilon_1,\epsilon_2,\epsilon_3` 分别是OA、OB和OC的长度。
+
+.. math::
+   
+  a_1 = \frac{1}{2}\epsilon_2\epsilon_3 \qquad a_2 = \frac{1}{2}\epsilon_1\epsilon_3 \qquad a_3 = \frac{1}{2}\epsilon_1\epsilon_2 
+
+根据三角形ABC面积的空间向量公式得到
+
+.. math::
+   :label: eq:1.2.1.2:1
+
+   a_{\mathbf n}\mathbf n =& \frac{1}{2}(\overrightarrow{BA})\times(\overrightarrow{CA})\\	   
+   =& \frac{1}{2}(\overrightarrow{OB}-\overrightarrow{OA})\times(\overrightarrow{OC}-\overrightarrow{OA})\\
+   =& \frac{1}{2}(\epsilon_2\mathbf e_2 - \epsilon_1\mathbf e_1)\times(\epsilon_3\mathbf e_3 - \epsilon_1\mathbf e_1)\\
+   =& \frac{1}{2}(\epsilon_3\epsilon_1\mathbf e_2 + \epsilon_1\epsilon_2\mathbf e_3 + \epsilon_2\epsilon_3\mathbf e_1)\\
+   =& a_2\mathbf e_2 + a_3\mathbf e_3 + a_1\mathbf e_1\,.
+  
+将 :eq:`eq:1.2.1.2:1` 两边乘以 :math:`\mathbf e_i,i=1,2,3` ，得到
+
+.. math::
+   
+  a_{\mathbf n}\mathbf n\cdot \mathbf e_i
+  = (a_2\mathbf e_2 + a_3\mathbf e_3 + a_1\mathbf e_1)\cdot \mathbf e_i = a_i\,.
+
+.. math::
+   
+  \frac{a_i}{a_{\mathbf n}} = \mathbf n\cdot \mathbf e_i
+
+根据图 :numref:`fig-1.2-1` 中四面体上的力平衡得到
+
+.. math::
+   :label: eq:1.2.1.2:2
+   
+   a_{\mathbf n}\mathbf T_{\mathbf n} + a_{1}\mathbf T_{\mathbf e_1^{-}} + a_{2}\mathbf T_{\mathbf e_2^{-}} + a_{3}\mathbf T_{\mathbf e_3^{-}} + v\mathbf b =& 0\\
+   \mathbf T_{\mathbf n} + \frac{a_{1}}{a_{\mathbf n}}\mathbf T_{\mathbf e_1^{-}} + \frac{a_{2}}{a_{\mathbf n}}\mathbf T_{\mathbf e_2^{-}} + \frac{a_{3}}{a_{\mathbf n}}\mathbf T_{\mathbf e_3^{-}} +\frac{v}{a_{\mathbf n}}\mathbf b =& 0\\
+   \mathbf T_{\mathbf n} + \mathbf n\cdot \mathbf e_1\mathbf T_{\mathbf e_1^{-}} + \mathbf n\cdot \mathbf e_2\mathbf T_{\mathbf e_2^{-}} + \mathbf n\cdot \mathbf e_3\mathbf T_{\mathbf e_3^{-}} +\frac{v}{a_{\mathbf n}}\mathbf b =& 0\,.
+
+当四面体体积 :math:`v` 趋于无穷小时得到
+
+.. math::
+
+   \mathbf T_{\mathbf n} + \mathbf n\cdot \mathbf e_1\mathbf T_{\mathbf e_1^{-}} + \mathbf n\cdot \mathbf e_2\mathbf T_{\mathbf e_2^{-}} + \mathbf n\cdot \mathbf e_3\mathbf T_{\mathbf e_3^{-}} = 0\,.
+
+.. math::
+   
+   \mathbf T_{\mathbf n} &= -\mathbf n\cdot \mathbf e_1\mathbf T_{\mathbf e_1^{-}} - \mathbf n\cdot \mathbf e_2\mathbf T_{\mathbf e_2^{-}} - \mathbf n\cdot \mathbf e_3\mathbf T_{\mathbf e_3^{-}}\\
+   &= \mathbf n\cdot \mathbf e_1\mathbf T_{\mathbf e_1} + \mathbf n\cdot \mathbf e_2\mathbf T_{\mathbf e_2} + \mathbf n\cdot \mathbf e_3\mathbf T_{\mathbf e_3}\\
+   &=  n_1\mathbf T_{\mathbf e_1} + n_2\mathbf T_{\mathbf e_2} + n_3\mathbf T_{\mathbf e_3} \\
+   &=\mathbf n \cdot \left(\begin{array}{ccc}
+   \mathbf T_{\mathbf e_1,1} &     \mathbf T_{\mathbf e_1,2} &     \mathbf T_{\mathbf e_1,3} \\
+   \mathbf T_{\mathbf e_2,1} &     \mathbf T_{\mathbf e_2,2} &     \mathbf T_{\mathbf e_2,3} \\
+   \mathbf T_{\mathbf e_3,1} &     \mathbf T_{\mathbf e_3,2} &     \mathbf T_{\mathbf e_3,3} 
+   \end{array}\right)\,.
+
+由此定义应力张量
+
+.. math::
+   :label: eq:1.2.1.2:3
+   
+   \mathbf \sigma = \left(\begin{array}{ccc}
+   \mathbf T_{\mathbf e_1,1} &     \mathbf T_{\mathbf e_1,2} &     \mathbf T_{\mathbf e_1,3} \\
+   \mathbf T_{\mathbf e_2,1} &     \mathbf T_{\mathbf e_2,2} &     \mathbf T_{\mathbf e_2,3} \\
+   \mathbf T_{\mathbf e_3,1} &     \mathbf T_{\mathbf e_3,2} &     \mathbf T_{\mathbf e_3,3} 
+   \end{array}\right) \,.
+
+
+主应力和最大剪切应力
+^^^^^^^^^^^^^^^^^^^^^^^
+
+主应力和最大剪切应力的理解对弹塑性本构定义的理解是非常重要的。 :math:`\mathbf T_{\mathbf n}` 和 :math:`\mathbf n` 是固定不变的，如图 :numref:`fig-1.2.1.3-1` 中绿色向量为 :math:`\mathbf T_{\mathbf n}` ，但是 :math:`\mathbf \sigma` 在不同坐标系下是不一样的。由于 :math:`\mathbf T_{\mathbf n}=\mathbf n\cdot\mathbf \sigma` ，可以把 :math:`\mathbf \sigma` 作为算子进行处理，在线性代数里有完整的介绍。因为特征向量是垂直的，将正交坐标系转成特征向量定义的坐标系，将 :math:`\mathbf \sigma` 变换后得到的张量算子只有正应力没有剪切应力，同时正应力达到最大，又称为主应力。类似可以通过坐标变换让剪切应力达到最大。显然最大正应力和最大剪切应力是定义弹塑性准则的依据。
+
+.. _fig-1.2.1.3-1:
+
+.. figure:: ../../images/fig:1.2.1.3:1.png
+   :alt: Logo
+   :align: center
+   :height: 150px
+
+   正应力
+
+力平衡
+^^^^^^^^^^^^^^^
+
+更多细节见 :cite:`AsaroLubarda` 第94页。根据静力平衡有
+
+.. math::
+
+   \int_S \mathbf T_{\mathbf n} \ud S + \int_{V}\mathbf b \ud V = 0\,. 
+
+根据应力张量定义得到
+
+.. math::
+   
+  \int_S \mathbf n\cdot \mathbf \sigma \ud S + \int_{V}\mathbf b \ud V = 0\,.
+  
+根据Gauss定理得到
+
+.. math::
+   :label: eq:1.2.1.4:1
+		   
+   \int_V \nabla \cdot \mathbf \sigma \ud V + \int_{V}\mathbf b \ud V = 0\,.
+  
+因为 :eq:`eq:1.2.1.4:1` 对任意 :math:`V` 成立，得到方程
+
+.. math::
+   :label: eq:1.2.1.4:2
+   
+   -\nabla\cdot\mathbf \sigma = \mathbf b\,.
+
+
+质量守恒
+^^^^^^^^^^^^^^^
+
+更多细节见 :cite:`AsaroLubarda` 第107页。根据质量守恒有
+
+.. math::
+  \frac{\ud }{\ud t}\int_V\rho\ud V = 0\,.
+  
+:math:`\phi` 是一个标量函数，输运公式（Transport Formulae）定义见 :cite:`AsaroLubarda` 第83页Lemma 4.4，如下：
+
+.. math::
+   :label: eq:1.2.1.5:1
+		   
+   \frac{\ud }{\ud t}\int_V \phi \ud V = \int_{V}(\dot \phi + \phi \mathrm{tr} \mathbf L)\ud V\,.
+  
+:math:`\mathbf L` 为速度梯度，定义见 :cite:`AsaroLubarda` 第71页等式(4.121)，如下：
+
+.. math::
+	  
+   \mathbf L = \nabla \mathbf v = \left(\begin{array}{ccc}
+   \frac{\partial v_1}{\partial x_1} &     \frac{\partial v_1}{\partial x_2} &     \frac{\partial v_1}{\partial x_3} \\
+   \frac{\partial v_2}{\partial x_1} &     \frac{\partial v_2}{\partial x_2} &     \frac{\partial v_2}{\partial x_3} \\
+   \frac{\partial v_3}{\partial x_1} &     \frac{\partial v_3}{\partial x_2} &     \frac{\partial v_3}{\partial x_3} 
+   \end{array}\right)
+	
+根据 :eq:`eq:1.2.1.5:1` 得到
+
+.. math::
+   :label: eq:1.2.1.5:2
+		   
+   \frac{\ud }{\ud t}\int_V\rho\ud V = \int_V(\dot\rho + \rho \nabla\cdot\mathbf v)\ud V = 0\,.
+
+因为 :eq:`eq:1.2.1.5:2` 对任意 :math:`V` 成立，得到方程
+
+.. math::
+   :label: eq:1.2.1.5:3
+		   
+   \dot\rho + \rho \nabla\cdot\mathbf v = 0\,.
+
+
+
+动量守恒
+^^^^^^^^^^^^^^^
+
+更多细节见 :cite:`AsaroLubarda` 第108页。 :math:`\rho\phi` 是一个标量函数，根据 :eq:`eq:1.2.1.5:1` 有
+
+.. math::
+   
+  \frac{\ud }{\ud t}\int_V \rho\phi \ud V =& \int_{V}(\dot{\rho\phi} + \rho\phi \mathrm{tr} \mathbf L) \ud V \\
+  =& \int_{V}(\dot{\rho}\phi + \rho\dot{\phi} + \rho\phi \nabla\cdot\mathbf v) \ud V \\
+  =& \int_{V}(\rho\dot{\phi} + (\dot{\rho} + \rho\nabla\cdot\mathbf v)\phi) \ud V\,.
+  
+在质量守恒的条件下，根据 :eq:`eq:1.2.1.5:3` 得到
+
+.. math::
+   
+  \frac{\ud }{\ud t}\int_V \rho\phi \ud V = \int_{V}\rho\dot{\phi}  \ud V\,.
+  
+根据牛顿第二定律有
+
+.. math::
+   :label: eq:1.2.1.6:1
+   
+   \frac{\ud }{\ud t }\int_{V}\rho\mathbf v\ud V = \int_V\rho\hat{\mathbf b} \ud V + \int_S\mathbf T_{\mathbf n}\ud S\,.
+   
+:math:`\hat{\mathbf b}` 是单位质量受到的体力， :eq:`eq:1.2.1.4:2` 中 :math:`\mathbf b` 是单位体积受到的体力。
+根据 :eq:`eq:1.2.1.6:1` 、应力张量定义和Gauss散度定理得到
+
+.. math::
+   :label: eq:1.2.1.6:2
+   
+   &\int_V\rho\dot{\mathbf v}\ud V = \int_V\rho\hat{\mathbf b} \ud V + \int_V\nabla\cdot\mathbf \sigma\ud V\\
+   &\int_V(\rho\dot{\mathbf v}-\rho\hat{\mathbf b} -\nabla\cdot\mathbf \sigma)\ud V = 0\,.
+
+因为 :eq:`eq:1.2.1.6:2` 对任意 :math:`V` 成立，得到方程
+
+.. math::
+   :label: eq:1.2.1.6:3
+		   
+   \rho\dot{\mathbf v} -\nabla\cdot\mathbf \sigma = \rho\hat{\mathbf b}\,.
+
+
+能量守恒
+^^^^^^^^^^^^^^^
+
+  
+应变和位移
+--------------------
+
+连续介质从参照状态到当前状态发生变形的应变和位移，如图 :numref:`fig-1.2.2-1` 。
+
+.. _fig-1.2.2-1:
+
+.. figure:: ../../images/fig:1.2.2:1.png
+   :alt: Logo
+   :align: center
+   :height: 150px
+
+   应变位移关系
+
+从参照状态到当前状态有一个映射
+
+.. math::
+   \mathbf x = \mathbf x(\mathbf X)\,.
+  
+定义 :math:`\mathbf P_0=\mathbf X` ， :math:`\mathbf Q_0=\mathbf X +\ud\mathbf X` ， :math:`\mathbf P_1=\mathbf x` , :math:`\mathbf Q_1=\mathbf x +\ud\mathbf x` 。
+
+.. math::
+   \mathbf Q_1-\mathbf P_1 =&\mathbf x(\mathbf Q_0) - \mathbf x(\mathbf P_0)\\
+   =&\mathbf x(\mathbf P_0 + \mathbf Q_0 - \mathbf P_0) - \mathbf x(\mathbf P_0)\\
+   \approx&\mathbf x(\mathbf P_0) + \nabla_{\mathbf X}\mathbf x(\mathbf P_0)(\mathbf Q_0 - \mathbf P_0) - \mathbf x(\mathbf P_0)  \\
+   = &\nabla_{\mathbf X}\mathbf x(\mathbf P_0)\cdot(\mathbf Q_0-\mathbf P_0)\,.
+   
+.. math::
+   :label: eq:1.2.2:1
+		   
+   \ud\mathbf x= \nabla_{\mathbf X}\mathbf x(\mathbf X)\cdot\ud\mathbf X=\left(\begin{array}{ccc}
+   \frac{\partial x_1}{\partial X_1} & \frac{\partial x_1}{\partial X_2} & \frac{\partial x_1}{\partial X_3}\\
+   \frac{\partial x_2}{\partial X_1} & \frac{\partial x_2}{\partial X_2} & \frac{\partial x_2}{\partial X_3}\\
+   \frac{\partial x_3}{\partial X_1} & \frac{\partial x_3}{\partial X_2} & \frac{\partial x_3}{\partial X_3}
+   \end{array}\right)\cdot\ud\mathbf X =\mathbf F(\mathbf X)\cdot\ud\mathbf X
+
+定义位移 :math:`\mathbf u=\mathbf x-\mathbf X` ，两边对 :math:`\mathbf X` 求导数得到
+
+.. math::
+  \left(\begin{array}{ccc}
+    \frac{\partial u_1}{\partial X_1} & \frac{\partial u_1}{\partial X_2} & \frac{\partial u_1}{\partial X_3}\\
+    \frac{\partial u_2}{\partial X_1} & \frac{\partial u_2}{\partial X_2} & \frac{\partial u_2}{\partial X_3}\\
+    \frac{\partial u_3}{\partial X_1} & \frac{\partial u_3}{\partial X_2} & \frac{\partial u_3}{\partial X_3}
+  \end{array}\right)
+  =&
+    \left(\begin{array}{ccc}
+    \frac{\partial x_1}{\partial X_1} & \frac{\partial x_1}{\partial X_2} & \frac{\partial x_1}{\partial X_3}\\
+    \frac{\partial x_2}{\partial X_1} & \frac{\partial x_2}{\partial X_2} & \frac{\partial x_2}{\partial X_3}\\
+    \frac{\partial x_3}{\partial X_1} & \frac{\partial x_3}{\partial X_2} & \frac{\partial x_3}{\partial X_3}
+  \end{array}\right)-\left(\begin{array}{ccc}
+      1 & 0 & 0\\
+      0 & 1 & 0\\
+      0 & 0 & 1
+    \end{array}\right)
+	
+.. math::
+  \frac{\partial \mathbf u}{\partial \mathbf X} = \mathbf F - \mathbf I\,.
+
+拉伸和正应变
+^^^^^^^^^^^^^^^
+
+应变比较小时有
+
+.. math::
+   \|\ud \mathbf x\|\approx\|\ud \mathbf X\|\,.
+
+.. math::
+  \frac{\|\ud \mathbf x\|^2-\|\ud \mathbf X\|^2}{\|\ud \mathbf X\|^2} = \frac{(\|\ud \mathbf x\|-\|\ud \mathbf X\|)(\|\ud \mathbf x\|+\|\ud \mathbf X\|)}{\|\ud \mathbf X\|^2} \approx\frac{2(\|\ud \mathbf x\|-\|\ud \mathbf X\|)}{\|\ud \mathbf X\|}\,.
+
+根据 :eq:`eq:1.2.2:1` 得到，
+
+.. math::
+  \frac{\|\ud \mathbf x\|-\|\ud \mathbf X\|}{\|\ud \mathbf X\|}\approx&\frac{1}{2}\frac{\|\ud \mathbf x\|^2-\|\ud \mathbf X\|^2}{\|\ud \mathbf X\|^2}\\
+  = &  \frac{1}{2}\frac{\ud\mathbf x\cdot\ud\mathbf x-\ud \mathbf X\cdot\ud \mathbf X}{\|\ud \mathbf X\|^2}\\
+  = &\frac{1}{2}\frac{(\mathbf F\cdot\ud\mathbf X)^T\cdot(\mathbf F\cdot\ud\mathbf X)-\ud \mathbf X\cdot\mathbf I\cdot\ud \mathbf X}{\|\ud \mathbf X\|^2}\\
+  = &\frac{1}{2}\frac{\ud\mathbf X\cdot\mathbf F^T\cdot\mathbf F\cdot\ud\mathbf X-\ud \mathbf X\cdot\mathbf I\cdot\ud \mathbf X}{\|\ud \mathbf X\|^2}\\
+  = &\frac{\ud\mathbf X}{\|\ud \mathbf X\|}\cdot\frac{\mathbf F^T\cdot\mathbf F-\mathbf I}{2}\cdot\frac{\ud\mathbf X}{\|\ud \mathbf X\|}
+  
+定义应变张量为
+
+.. math::
+   :label: eq:1.2.2.1:1
+		   
+   \mathbf E(\mathbf X)=\frac{\mathbf F^T\cdot\mathbf F-\mathbf I}{2}=\left(
+   \begin{array}{ccc}
+	  E_{11} & E_{12} & E_{13} \\
+	  E_{21} & E_{22} & E_{23} \\
+	  E_{31} & E_{32} & E_{33} 
+   \end{array}\right)\,.
+  
+对于 :math:`\mathbf e_1=(1,0,0)` 方向上的正应变有
+
+.. math::
+  \frac{\ud\mathbf X}{\|\ud \mathbf X\|}\cdot\frac{\mathbf F^T\cdot\mathbf F-\mathbf I}{2}\cdot\frac{\ud\mathbf X}{\|\ud \mathbf X\|}=
+  \mathbf e_1\cdot\frac{\mathbf F^T\cdot\mathbf F-\mathbf I}{2}\cdot\mathbf e_1=E_{11}\,.
+  
+同样 :math:`E_{22}` 和 :math:`E_{33}` 分别是 :math:`\mathbf e_2` 和 :math:`\mathbf e_3` 方向上的正应变。
+
+
+
+角度和剪切应变
+^^^^^^^^^^^^^^^^^^^^^^
+
+首先需要注意小角度近似计算，根据Taylor展开有
+
+.. math::
+   :label: eq:1.2.2.2:1
+		   
+   \tan\theta &\approx \theta\,,\\
+   \sin\theta &\approx \theta \,.
+
+.. _fig-1.2.2-2:
+
+.. figure:: ../../images/fig:1.2.2:2.png
+   :alt: Logo
+   :align: center
+   :height: 150px
+
+   角度变化和剪切应变
+   
+图 :numref:`fig-1.2.2-2` 中两个向量夹角余弦为
+
+.. math::
+  \cos(\mathbf n_1,\mathbf n_2) =& \mathbf n_1\cdot\mathbf n_2 \\
+  =& \frac{\ud\mathbf x_1}{\|\ud\mathbf x_1\|}\cdot\frac{\ud\mathbf x_2}{\|\ud\mathbf x_2\|}\\
+  =& \frac{\mathbf F\cdot\ud\mathbf X_1}{\sqrt{\mathbf F\cdot\ud\mathbf X_1\cdot\mathbf F\cdot\ud\mathbf X_1}}\cdot\frac{\mathbf F\cdot\ud\mathbf X_2}{\sqrt{\mathbf F\cdot\ud\mathbf X_2\cdot\mathbf F\cdot\ud\mathbf X_2}}\\
+  =& \frac{\ud\mathbf X_1\cdot\mathbf F^T\cdot\mathbf F\cdot\ud\mathbf X_2}{\sqrt{\ud\mathbf X_1\cdot\mathbf F^T\cdot\mathbf F\cdot\ud\mathbf X_1}\sqrt{\ud\mathbf X_2\cdot\mathbf F^T\cdot\mathbf F\cdot\ud\mathbf X_2}}\\
+  =& \frac{\ud\mathbf X_1\cdot(2\mathbf E-\mathbf I)\cdot\ud\mathbf X_2}{\sqrt{\ud\mathbf X_1\cdot(2\mathbf E-\mathbf I)\cdot\ud\mathbf X_1}\sqrt{\ud\mathbf X_2\cdot(2\mathbf E-\mathbf I)\cdot\ud\mathbf X_2}}\\
+  =& \frac{\frac{\ud\mathbf X_1}{\|\ud\mathbf X_1\|}\cdot(2\mathbf E-\mathbf I)\cdot\frac{\ud \mathbf X_2}{\|\mathbf X_2\|}}{\sqrt{\frac{\ud\mathbf X_1}{\|\ud\mathbf X_1\|}\cdot(2\mathbf E-\mathbf I)\cdot\frac{\ud\mathbf X_1}{\|\ud\mathbf X_1\|}}\sqrt{\frac{\ud\mathbf X_2}{\|\ud\mathbf X_2\|}\cdot(2\mathbf E-\mathbf I)\cdot\frac{\ud\mathbf X_2}{\|\ud\mathbf X_2\|}}}
+  
+对于 :math:`\mathbf N_1=\mathbf e_1` 和 :math:`\mathbf N_2=\mathbf e_2` 得到
+
+.. math::
+  \frac{\mathbf e_1\cdot(2\mathbf E-\mathbf I)\cdot\mathbf e_2}{\sqrt{\mathbf e_1\cdot(2\mathbf E-\mathbf I)\cdot\mathbf e_1}\sqrt{\mathbf e_2\cdot(2\mathbf E-\mathbf I)\cdot\mathbf e_2}}=  \frac{2E_{12}}{\sqrt{2E_{11}-1}\sqrt{2E_{22}-1}}\approx2 E_{12}\,.
+  
+如果 :math:`\mathbf n_1` 和 :math:`\mathbf n_2` 之间夹角为 :math:`\theta` ，根据 :eq:`eq:1.2.2.2:1` ，剪切应变为
+
+.. math::
+   :label: eq:1.2.2.2:2
+			  
+   \frac{\pi}{2}-\theta\approx\sin(\frac{\pi}{2}-\theta)=\cos(\theta)\approx2E_{12}\,.
+
+
+
+应变和位移关系
+^^^^^^^^^^^^^^^^^
+根据 :eq:`eq:1.2.2.1:1` 有
+
+.. math::
+  \mathbf E(\mathbf X)=&\frac{1}{2}(\mathbf F^T\cdot\mathbf F-\mathbf I)
+  =\frac{1}{2}\left(\left(\frac{\partial \mathbf u}{\partial \mathbf X}+\mathbf I\right)^T\cdot\left(\frac{\partial \mathbf u}{\partial \mathbf X}+\mathbf I\right)-\mathbf I\right)\\
+  =&\frac{1}{2}\left(\frac{\partial \mathbf u}{\partial \mathbf X}^T\frac{\partial \mathbf u}{\partial \mathbf X}+\frac{\partial \mathbf u}{\partial \mathbf X}^T+\frac{\partial \mathbf u}{\partial \mathbf X}\right)\\
+  \approx&\frac{1}{2}\left(\frac{\partial \mathbf u}{\partial \mathbf X}^T+\frac{\partial \mathbf u}{\partial \mathbf X}\right)\,.
+  
+:math:`\mathbf E(\mathbf X)` 是应变的Lagrangian表达形式， :math:`\mathbf\varepsilon(\mathbf x)` 是应变的Eulerian表达形式，当 :math:`\ud\mathbf x\rightarrow 0` 时有
+
+.. math::
+  \mathbf E(\mathbf X)\approx\mathbf\varepsilon(\mathbf x)\,.
+
+
+
+
+
+
+
+本构关系
+--------------------
+
+更多细节见 :cite:`AsaroLubarda` 第161页。定义 :math:`\sigma_N` 为正应力， :math:`\sigma_S` 为切应力， :math:`\varepsilon_N` 为正应变， :math:`\varepsilon_S` 为切应变， :math:`E` 为弹性模量， :math:`G` 为剪切模量，胡克定律对正应力和切应力分别为
+
+.. math::
+   \sigma_N =& E \varepsilon_N\,,\\
+   \sigma_S =& G \varepsilon_S\,.
+
+:math:`\varepsilon` 为轴向应变， :math:`\varepsilon'` 为横向应变，泊松比定义为
+	  
+.. math::
+  \frac{\varepsilon'}{\varepsilon}=-v\,.
+  
+根据Hooke定律得到
+
+.. math::
+   \varepsilon'=-v\varepsilon=-v \frac{\sigma}{E}\,.
+   
+应力张量在 :math:`\mathbf e_1,\mathbf e_2,\mathbf e_3` 每个方向上有一个正应力，
+:math:`\mathbf e_1` 方向上的正应力根据Hooke定律在 :math:`\mathbf e_1` 方向上产生应变，根据Poisson比在 :math:`\mathbf e_2,\mathbf e_3` 方向上也产生应变，其他两个方向的正应力类似。切应力引起角度变化， :math:`G` 是剪切模量，根据 :eq:`eq:1.2.2.2:2` 。
+
+.. math::
+   :label: eq:1.2.3:1
+		   
+   \varepsilon_{11}=&\frac{\sigma_{11}}{E}-v \frac{\sigma_{22}}{E}-v \frac{\sigma_{33}}{E}\\
+   \varepsilon_{22}=&\frac{\sigma_{22}}{E}-v \frac{\sigma_{11}}{E}-v \frac{\sigma_{33}}{E}\\
+   \varepsilon_{33}=&\frac{\sigma_{33}}{E}-v \frac{\sigma_{11}}{E}-v \frac{\sigma_{22}}{E}\\
+   2\varepsilon_{12}=&\frac{\sigma_{12}}{G}\\
+   2\varepsilon_{13}=&\frac{\sigma_{13}}{G}\\
+   2\varepsilon_{23}=&\frac{\sigma_{23}}{G}
+  
+
+弹性模量、剪切模量和泊松比关系有
+
+.. math::
+   :label: eq:1.2.3:2
+		   
+   G=\frac{E}{2(1+v)}\,.
+
+将 :eq:`eq:1.2.3:2` 代入 :eq:`eq:1.2.3:1` ，得到
+
+.. math::
+   
+  \left(\begin{array}{c}
+    \varepsilon_{11}\\
+  \varepsilon_{22}\\
+  \varepsilon_{33}\\
+  2\varepsilon_{12}\\
+  2\varepsilon_{13}\\
+  2\varepsilon_{23}
+  \end{array}\right)=\frac{1}{E}
+  \left(\begin{array}{cccccc}
+    1 & -v & -v & 0 & 0 & 0\\
+    -v & 1 & -v & 0 & 0 & 0\\
+    -v & -v & 1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 2(1+v) & 0 & 0 \\
+    0 & 0 & 0 & 0 & 2(1+v) & 0 \\
+    0 & 0 & 0 & 0 & 0 & 2(1+v) 
+    \end{array}\right)\left(\begin{array}{c}
+    \sigma_{11}\\
+  \sigma_{22}\\
+  \sigma_{33}\\
+  \sigma_{12}\\
+  \sigma_{13}\\
+  \sigma_{23}
+  \end{array}\right)\,.
+
+.. math::
+   \left(\begin{array}{c}
+   \sigma_{11}\\
+   \sigma_{22}\\
+   \sigma_{33}\\
+   \sigma_{12}\\
+   \sigma_{13}\\
+   \sigma_{23}
+   \end{array}\right)=\frac{E}{(1+v)(1-2v)}
+   \left(\begin{array}{cccccc}
+    1-v & v & v & 0 & 0 & 0\\
+    v & 1-v & v & 0 & 0 & 0\\
+    v & v & 1-v & 0 & 0 & 0\\
+    0 & 0 & 0 & \frac{1-2v}{2} & 0 & 0 \\
+    0 & 0 & 0 & 0 & \frac{1-2v}{2} & 0 \\
+    0 & 0 & 0 & 0 & 0 & \frac{1-2v}{2} 
+   \end{array}\right)
+   \left(\begin{array}{c}
+   \varepsilon_{11}\\
+   \varepsilon_{22}\\
+   \varepsilon_{33}\\
+   2\varepsilon_{12}\\
+   2\varepsilon_{13}\\
+   2\varepsilon_{23}
+   \end{array}\right)
+
+.. math::
+  \mu=\frac{E}{2(1+v)}\qquad\lambda=\frac{Ev}{(1+v)(1-2v)}
+
+.. math::
+  \lambda=&2\mu\frac{v}{1-2v}\\
+  \lambda(1-2v)=&2\mu v\\
+  v =&\frac{\lambda}{2(\lambda + \mu)}
+
+.. math::
+   \left(\begin{array}{c}
+   \sigma_{11}\\
+   \sigma_{22}\\
+   \sigma_{33}\\
+   \sigma_{12}\\
+   \sigma_{13}\\
+   \sigma_{23}
+   \end{array}\right)=
+   \left(\begin{array}{cccccc}
+   2\mu+\lambda & \lambda & \lambda & 0 & 0 & 0\\
+   \lambda & 2\mu+\lambda & \lambda & 0 & 0 & 0\\
+   \lambda & \lambda & 2\mu+\lambda & 0 & 0 & 0\\
+   0 & 0 & 0 & \mu & 0 & 0 \\
+   0 & 0 & 0 & 0 & \mu & 0 \\
+   0 & 0 & 0 & 0 & 0 & \mu 
+   \end{array}\right)
+   \left(\begin{array}{c}
+   \varepsilon_{11}\\
+   \varepsilon_{22}\\
+   \varepsilon_{33}\\
+   2\varepsilon_{12}\\
+   2\varepsilon_{13}\\
+   2\varepsilon_{23}
+   \end{array}\right)
+
+.. math::
+  \left(\begin{array}{ccc}
+    \sigma_{11} & \sigma_{12} & \sigma_{13}\\
+    \sigma_{21} & \sigma_{22} & \sigma_{23} \\
+    \sigma_{31} & \sigma_{32} & \sigma_{33} 
+  \end{array}\right)=
+  2\mu\left(\begin{array}{ccc}
+    \varepsilon_{11} & \varepsilon_{12} & \varepsilon_{13}\\
+    \varepsilon_{21} & \varepsilon_{22} & \varepsilon_{23} \\
+    \varepsilon_{31} & \varepsilon_{32} & \varepsilon_{33} 
+  \end{array}\right) +
+  \lambda\left(\begin{array}{ccc}
+    \sum_{i=1}^3\varepsilon_{ii} & 0 & 0\\
+    0 &\sum_{i=1}^3\varepsilon_{ii} & 0 \\
+    0 & 0 & \sum_{i=1}^3\varepsilon_{ii} 
+  \end{array}\right)
+
+.. math::
+  \mathbf\sigma = 2\mu\mathbf\varepsilon + \lambda\mathrm{tr}(\mathbf \varepsilon)\mathbf 1 = \mathbf C:\mathbf\varepsilon
+
+.. math::
+  \mathbf C_{ijkl}=\lambda\delta_{ij}\delta_{kl} + \mu(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})
+
+.. math::
+  \mathbf C=2\mu\mathbf I + \lambda\mathbf 1\otimes\mathbf 1
+
+.. math::
+  \mathbf I = \left(\begin{array}{lll}
+    \left(\begin{array}{lll}
+    1 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+    0 & \frac{1}{2} & 0 \\
+    \frac{1}{2} & 0 & 0 \\
+    0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+    0 & 0 & \frac{1}{2} \\
+    0 & 0 & 0 \\
+    \frac{1}{2} & 0 & 0 
+    \end{array}\right) \\
+     \left(\begin{array}{lll}
+    0 & \frac{1}{2} & 0 \\
+    \frac{1}{2} & 0 & 0 \\
+    0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+    0 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+    0 & 0 & 0 \\
+    0 & 0 & \frac{1}{2} \\
+    0 & \frac{1}{2} & 0 
+     \end{array}\right) \\
+     \left(\begin{array}{lll}
+    0 & 0 & \frac{1}{2} \\
+    0 & 0 & 0 \\
+    \frac{1}{2} & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+    0 & 0 & 0 \\
+    0 & 0 & \frac{1}{2} \\
+    0 & \frac{1}{2} & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+    0 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 1 
+    \end{array}\right) 
+    \end{array}\right)
+
+.. math::
+	\mathbf 1\otimes\mathbf 1 = \left(\begin{array}{lll}
+    \left(\begin{array}{lll}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 1 
+    \end{array}\right) & \left(\begin{array}{lll}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 
+    \end{array}\right) \\
+    \left(\begin{array}{lll}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 1 
+    \end{array}\right) & \left(\begin{array}{lll}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 
+    \end{array}\right) \\
+    \left(\begin{array}{lll}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & 0 
+    \end{array}\right) & \left(\begin{array}{lll}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 1 
+    \end{array}\right) 
+  \end{array}\right)
+
+
+静态弹性方程
+--------------------
+
+偏微分方程和边界条件
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. math::
+   :label: eq:1.2.4.1:1
+		   
+   -\nabla\cdot\mathbf \sigma=& \mathbf b  \qquad \mathbf x\in\Omega\,,\\
+   \mathbf \sigma\cdot\mathbf n =& \mathbf t \qquad \mathbf x\in\Gamma_N\,,\\
+   \mathbf u =& \mathbf g \qquad \mathbf x\in\Gamma_D\,.
+
+
+   
+变分形式
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+对 :eq:`eq:1.2.4.1:1` 两边点乘 :math:`\mathbf v` ，在 :math:`\Omega` 上积分得到
+
+.. math::
+   :label: eq:1.2.4.2:1
+		   
+   -\int_{\Omega}\nabla\cdot\mathbf \sigma\cdot\mathbf v\ud x =& \int_{\Omega}\mathbf b\cdot\mathbf v\ud x\,.
+  
+:eq:`eq:1.2.4.2:1` 左边为
+
+.. math::
+   :label: eq:1.2.4.2:2
+   
+   &-\int_{\Omega}\nabla\cdot\mathbf \sigma\cdot\mathbf v\ud x\\
+	  =&  -\int_{\Omega}\left(
+   \sum_{i=1}^3\frac{\partial \sigma_{i1}}{\partial x_i}v_1 + \sum_{i=1}^3\frac{\partial \sigma_{i2}}{\partial x_i}v_2 + \sum_{i=1}^3\frac{\partial \sigma_{i3}}{\partial x_i}v_3
+   \right)\ud x  \\ 
+   =&  -\int_{\Omega}\left(
+   \nabla\cdot\mathbf\sigma_{\cdot 1}v_1 + \nabla\cdot\mathbf\sigma_{\cdot 2}v_2 + \nabla\cdot\mathbf\sigma_{\cdot 3}v_3
+   \right)\ud x \\
+   =&-\int_{\Gamma}\left(
+   \mathbf n\cdot\mathbf \sigma_{\cdot 1}v_1 + \mathbf n\cdot\mathbf \sigma_{\cdot 2}v_2 + \mathbf n\cdot\mathbf\sigma_{\cdot 3}v_3\right)\ud s_x     
+   +\int_{\Omega}\left(
+   \nabla v_1\cdot\mathbf \sigma_{\cdot 1} + \nabla v_2\cdot\mathbf \sigma_{\cdot 2} + \nabla v_3\cdot\mathbf \sigma_{\cdot 3}\right)\ud x\,.
+	
+对 :eq:`eq:1.2.4.2:2` 的第二个积分项，由 :math:`\mathbf\sigma=\mathbf\sigma^T` 得到
+
+.. math::
+   :label: eq:1.2.4.2:3
+   
+    &\nabla v_1\cdot\mathbf \sigma_{\cdot 1} + \nabla v_2\cdot\mathbf \sigma_{\cdot 2} + \nabla v_3\cdot\mathbf \sigma_{\cdot 3} \\
+    =&\frac{\partial v_1}{\partial x_1}\sigma_{11} + \frac{\partial v_1}{\partial x_2}\sigma_{21} + \frac{\partial v_1}{\partial x_3}\sigma_{31} + \frac{\partial v_2}{\partial x_1}\sigma_{12} + \frac{\partial v_2}{\partial x_2}\sigma_{22} + \frac{\partial v_2}{\partial x_3}\sigma_{32} 
+    + \frac{\partial v_3}{\partial x_1}\sigma_{13} + \frac{\partial v_3}{\partial x_2}\sigma_{23} + \frac{\partial v_3}{\partial x_3}\sigma_{33} \\
+    =&\frac{\partial v_1}{\partial x_1}\sigma_{11} + \frac{\frac{\partial v_1}{\partial x_2}+\frac{\partial v_2}{\partial x_1}}{2}\sigma_{21} 
+    + \frac{\frac{\partial v_1}{\partial x_3}+\frac{\partial v_3}{\partial x_1}}{2}\sigma_{31}
+    + \frac{\frac{\partial v_2}{\partial x_1}+\frac{\partial v_1}{\partial x_2}}{2}\sigma_{12}
+    + \frac{\partial v_2}{\partial x_2}\sigma_{22} + \frac{\frac{\partial v_2}{\partial x_3}+\frac{\partial v_3}{\partial x_2}}{2}\sigma_{32} \\
+    &+\frac{\frac{\partial v_3}{\partial x_1}+\frac{\partial v_1}{\partial x_3}}{2}\sigma_{13} + \frac{\frac{\partial v_3}{\partial x_2}+\frac{\partial v_2}{\partial x_3}}{2}\sigma_{23} + \frac{\partial v_3}{\partial x_3}\sigma_{33}\\
+    =&\mathbf\sigma:\mathbf\varepsilon(\mathbf v)\,.
+	
+将 :eq:`eq:1.2.4.2:2` 代入 :eq:`eq:1.2.4.2:1` ，再将 :eq:`eq:1.2.4.2:3` 代入 :eq:`eq:1.2.4.2:2` ，得到
+
+.. math::
+   :label: eq:1.2.4.2:4
+   
+   &-\int_{\Gamma}\mathbf\sigma\cdot\mathbf n\cdot\mathbf v\ud s_x      +\int_{\Omega}\mathbf\sigma:\mathbf\varepsilon(\mathbf v)\ud x = \int_{\Omega}\mathbf b\cdot\mathbf v\ud x\,.
+
+根据本构关系有
+
+.. math::
+   :label: eq:1.2.4.2:5
+   
+   \int_{\Omega}\mathbf\sigma(\mathbf u):\mathbf\varepsilon(\mathbf v)\ud x=\int_{\Omega}(2\mu\mathbf \varepsilon(\mathbf u) + \lambda\mathrm{tr}(\mathbf\varepsilon(\mathbf u))\mathbf I):\mathbf\varepsilon(\mathbf v)\ud x\,.
+
+   
+:eq:`eq:1.2.4.2:5` 右边积分第二项为
+
+.. math::
+   :label: eq:1.2.4.2:6
+   
+   &\lambda\mathrm{tr}(\mathbf\varepsilon(\mathbf u))\mathbf I:\mathbf\varepsilon(\mathbf v)\\
+   =&\lambda
+   \left(\begin{array}{ccc}
+   \sum_{i=1}^3\frac{\partial u_i}{\partial x_i} & 0   & 0\\
+   0 & \sum_{i=1}^3\frac{\partial u_i}{\partial x_i}   & 0\\
+   0 & 0   & \sum_{i=1}^3\frac{\partial u_i}{\partial x_i}
+   \end{array}
+   \right):
+   \left(\begin{array}{ccc}
+   \frac{\partial v_1}{\partial x_1} &     \frac{\frac{\partial v_1}{\partial x_2} + \frac{\partial v_2}{\partial x_1}}{2} &     \frac{\frac{\partial v_1}{\partial x_3} + \frac{\partial v_3}{\partial x_1}}{2}\\
+   \frac{\frac{\partial v_2}{\partial x_1} + \frac{\partial v_1}{\partial x_2}}{2} &     \frac{\partial v_2}{\partial x_2} &     \frac{\frac{\partial v_2}{\partial x_3} + \frac{\partial v_3}{\partial x_2}}{2}\\
+   \frac{\frac{\partial v_3}{\partial x_1} + \frac{\partial v_1}{\partial x_3}}{2} &     \frac{\frac{\partial v_3}{\partial x_2} + \frac{\partial v_2}{\partial x_3}}{2} &    \frac{\partial v_3}{\partial x_3}
+   \end{array}\right)\\
+   =&\lambda\nabla\cdot\mathbf u\nabla\cdot\mathbf v\,.
+  
+将 :eq:`eq:1.2.4.2:6` 代入 :eq:`eq:1.2.4.2:5` ，将 :eq:`eq:1.2.4.2:5` 代入 :eq:`eq:1.2.4.2:4` ，得到
+
+.. math::
+   
+  \int_{\Omega}\left(2\mu\mathbf \varepsilon(\mathbf u) :\mathbf\varepsilon(\mathbf v)+\lambda\nabla\cdot\mathbf u \nabla\cdot\mathbf v\right)\ud x =
+  \int_{\Gamma}\mathbf\sigma\cdot\mathbf n\cdot\mathbf v\ud s_x + \int_{\Omega}\mathbf b\cdot\mathbf v\ud x\,.
+  
+找到 :math:`\mathbf u\in\mathbf V_{\mathbf g}` 使得
+
+.. math::
+
+   \int_{\Omega}\left(2\mu\mathbf \varepsilon(\mathbf u) :\mathbf\varepsilon(\mathbf v)+\lambda\nabla\cdot\mathbf u \nabla\cdot\mathbf v\right)\ud x =
+  \int_{\Gamma}\mathbf t\cdot\mathbf v\ud s_x + \int_{\Omega}\mathbf b\cdot\mathbf v\ud x
+  
+对所有的 :math:`\mathbf v\in\mathbf V_{0}` 成立。
+
+
+有限元离散形式
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+线性代数方程组
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+瞬态弹性方程
+--------------------
+
+
+偏微分方程和初始/边界条件
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. math::
+   :label: eq:1.2.5.1:1
+		   
+   \rho\dot{\mathbf v} -\nabla\cdot\mathbf \sigma =& \rho\hat{\mathbf b}\,,\\
+   \mathbf \sigma\cdot\mathbf n =& \mathbf g_N \qquad \mathbf x\in\Gamma_N\,,\\
+   \mathbf u =& \mathbf g_D \qquad \mathbf x\in\Gamma_D\,,\\
+   \mathbf u(0,x) = & \mathbf h_1 \qquad x\in\overline\Omega\,,\\
+   \dot{\mathbf u}(0,x) = & \mathbf h_2 \qquad x\in\overline\Omega\,.
+
+
+   
+变分形式
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. math::
+   \int_{\Omega}\rho\frac{\partial ^2 \mathbf u}{\partial t^2}\cdot\mathbf v\ud x + \int_{\Omega}\left(2\mu\mathbf \varepsilon(\mathbf u) :\mathbf\varepsilon(\mathbf v)+\lambda\nabla\cdot\mathbf u \nabla\cdot\mathbf v\right)\ud x =
+   \int_{\Gamma}\mathbf t\cdot\mathbf v\ud s_x + \int_{\Omega}\rho\mathbf b\cdot\mathbf v\ud x
+
+
+有限元离散形式
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+线性代数方程组
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. math::
+
+   M\ddot U + K U = f
+
+.. math::
+   
+   M\frac{U^{n+1}-2U^n+U^{n-1}}{k^2} + K\frac{U^{n+1}+2U^{n}+U^{n-1}}{4} = f^{n}
+
+.. math::
+
+   MU^{n+1} + \frac{1}{4}k^2KU^{n+1} = k^2f^{n} + M(2U^n - U^{n-1}) - \frac{1}{4}k^2KU^{n-1} - \frac{1}{2}k^2KU^{n}
