@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.15)  5 OCT 2022 16:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.15)  5 OCT 2022 16:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -994,7 +994,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 382.
 Here is how much of TeX's memory you used:
  15176 strings out of 481239
  211054 string characters out of 5920376
- 496524 words of memory out of 5000000
+ 496521 words of memory out of 5000000
  29911 multiletter control sequences out of 15000+600000
  583855 words of font info for 85 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1023,7 +1023,7 @@ ts/type1/arphic/gbsnu/gbsnuff.pfb></usr/share/texmf/fonts/type1/public/tex-gyre
 exmf/fonts/type1/public/tex-gyre/qhvr.pfb></usr/share/texmf/fonts/type1/public/
 tex-gyre/qtmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/
 share/texmf/fonts/type1/public/tex-gyre/qtmri.pfb>
-Output written on ocp.pdf (13 pages, 263990 bytes).
+Output written on ocp.pdf (13 pages, 263872 bytes).
 PDF statistics:
  283 PDF objects out of 1000 (max. 8388607)
  206 compressed objects within 3 object streams

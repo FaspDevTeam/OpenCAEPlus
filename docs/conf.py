@@ -182,7 +182,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenCAE+'
-copyright = u'2022, Dr. Chensong Zhang'
+copyright = u'2022, opencaeplus.org'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -323,7 +323,7 @@ htmlhelp_basename = 'ocpdoc'
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'ocp.tex', u'OpenCAE+',
-   u'Dr. Chensong Zhang', 'manual'),
+   u'opencaeplus.org', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
