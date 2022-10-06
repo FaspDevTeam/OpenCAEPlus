@@ -20,10 +20,10 @@ Welcome to the OpenCAEPlus project! The "CAEPlus" means numerical simulation wit
 # make the cli executable
 chmod 755 cli 
 # build, check helper
-cli build
-cli build -b Debug -t all -c intel 
+./cli build
+./cli build -b Debug -t all -c intel 
 # doc, check helper
-cli doc 
-cli doc -b web
+./cli doc 
+./cli doc -b web
 
 ```
