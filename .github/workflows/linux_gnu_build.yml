@@ -23,4 +23,5 @@ jobs:
             - name: Build 
               run: |
                   export FASP_DIR=/opt/faspsolver
+                  chmod 755 cli
                   ./cli build gnu Debug all
