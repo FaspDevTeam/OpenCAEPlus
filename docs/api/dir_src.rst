@@ -11,6 +11,6 @@ Directory src
 Files
 -----
 
-- :ref:`file_src_HelloWorld.h`
+- :ref:`file_src_Main.cpp`
 
 

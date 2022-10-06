@@ -8,7 +8,7 @@ File Hierarchy
    <ul class="treeView" id="file-treeView">
      <li>
        <ul class="collapsibleList">
-         <li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li class="lastChild">File <a href="file_src_HelloWorld.h.html#file-src-HelloWorld.h">HelloWorld.h</a></li></ul></li>
+         <li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li class="lastChild">File <a href="file_src_Main.cpp.html#file-src-Main.cpp">Main.cpp</a></li></ul></li>
        </ul>
      </li><!-- only tree view element -->
    </ul><!-- /treeView file-treeView -->

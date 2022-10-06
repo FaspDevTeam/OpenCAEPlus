@@ -20,4 +20,4 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_src_HelloWorld.h.rst
+   file_src_Main.cpp.rst
