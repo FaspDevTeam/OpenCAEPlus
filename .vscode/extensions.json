@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "cheshirekow.cmake-format",
+        "streetsidesoftware.code-spell-checker",
+        "mhutchie.git-graph",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake"
+    ]
+}

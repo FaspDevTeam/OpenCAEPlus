@@ -1,0 +1,16 @@
+{
+    "terminal.integrated.env.linux": {
+        "PATH": "${workspaceFolder}:${env:PATH}"
+    },
+    "terminal.integrated.env.osx": {
+        "PATH": "${workspaceFolder}:${env:PATH}"
+    },
+    "terminal.integrated.env.windows": {
+        "PATH": "${workspaceFolder}:${env:PATH}"
+    },
+    "files.associations": {
+        "*.f90": "FortranFreeForm",
+        "Main.C": "cpp",
+        "test.C": "cpp"
+    }
+}
