@@ -23,7 +23,27 @@ sys.path.append(os.path.abspath('exts'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.imgmath', "math_dollar", 'sphinx.ext.todo', 'breathe', 'exhale', 'sphinxcontrib.bibtex']
+extensions = ['sphinx.ext.imgmath', "math_dollar", 'sphinx.ext.todo', 'breathe', 'exhale', 'sphinxcontrib.bibtex','myst_parser']
+
+# ------ myst related settings
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
+]
+
+myst_heading_anchors = 3
+myst_all_links_external = True
+# ------ myst related settings
+
 
 latex_preamble = r"""
 \usepackage{dsfont}
@@ -172,7 +192,7 @@ latex_elements = {"preamble": latex_preamble}
 templates_path = ['_templates']
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = ['.rst','md']
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
