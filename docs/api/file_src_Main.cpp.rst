@@ -30,18 +30,13 @@ Includes
 --------
 
 
+- ``OpenCAEPlus/OpenCAEPlus.hpp`` (:ref:`file_src_lib_include_public_OpenCAEPlus_OpenCAEPlus.hpp`)
+
 - ``iostream``
 
 
 
 
-
-
-Namespaces
-----------
-
-
-- :ref:`namespace_std`
 
 
 Functions

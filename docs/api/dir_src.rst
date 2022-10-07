@@ -7,6 +7,11 @@ Directory src
 
 *Directory path:* ``src``
 
+Subdirectories
+--------------
+
+- :ref:`dir_src_lib`
+
 
 Files
 -----

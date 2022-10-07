@@ -8,7 +8,7 @@ File Hierarchy
    <ul class="treeView" id="file-treeView">
      <li>
        <ul class="collapsibleList">
-         <li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li class="lastChild">File <a href="file_src_Main.cpp.html#file-src-Main.cpp">Main.cpp</a></li></ul></li>
+         <li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li>Directory <a href="dir_src_lib.html#dir-src-lib">lib</a><ul><li>Directory <a href="dir_src_lib_include.html#dir-src-lib-include">include</a><ul><li class="lastChild">Directory <a href="dir_src_lib_include_public.html#dir-src-lib-include-public">public</a><ul><li class="lastChild">Directory <a href="dir_src_lib_include_public_OpenCAEPlus.html#dir-src-lib-include-public-OpenCAEPlus">OpenCAEPlus</a><ul><li class="lastChild">File <a href="file_src_lib_include_public_OpenCAEPlus_OpenCAEPlus.hpp.html#file-src-lib-include-public-OpenCAEPlus-OpenCAEPlus.hpp">OpenCAEPlus.hpp</a></li></ul></li></ul></li></ul></li><li class="lastChild">File <a href="file_src_lib_OpenCAEPlus.cpp.html#file-src-lib-OpenCAEPlus.cpp">OpenCAEPlus.cpp</a></li></ul></li><li class="lastChild">File <a href="file_src_Main.cpp.html#file-src-Main.cpp">Main.cpp</a></li></ul></li>
        </ul>
      </li><!-- only tree view element -->
    </ul><!-- /treeView file-treeView -->
