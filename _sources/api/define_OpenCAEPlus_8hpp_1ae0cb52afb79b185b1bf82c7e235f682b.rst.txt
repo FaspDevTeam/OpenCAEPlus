@@ -1,0 +1,14 @@
+.. _exhale_define_OpenCAEPlus_8hpp_1ae0cb52afb79b185b1bf82c7e235f682b:
+
+Define VERSION_MINOR
+====================
+
+- Defined in :ref:`file_src_lib_include_public_OpenCAEPlus_OpenCAEPlus.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: VERSION_MINOR
+   :project: My Project

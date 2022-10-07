@@ -1,0 +1,14 @@
+.. _exhale_define_OpenCAEPlus_8hpp_1a901edadf17488bb6be1ac9a1e3cfea7a:
+
+Define VERSION_PATCH
+====================
+
+- Defined in :ref:`file_src_lib_include_public_OpenCAEPlus_OpenCAEPlus.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: VERSION_PATCH
+   :project: My Project

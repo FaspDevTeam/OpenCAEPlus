@@ -1,0 +1,21 @@
+.. _dir_src_lib_include_public_OpenCAEPlus:
+
+
+Directory OpenCAEPlus
+=====================
+
+
+|exhale_lsh| :ref:`Parent directory <dir_src_lib_include_public>` (``src/lib/include/public``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+*Directory path:* ``src/lib/include/public/OpenCAEPlus``
+
+
+Files
+-----
+
+- :ref:`file_src_lib_include_public_OpenCAEPlus_OpenCAEPlus.hpp`
+
+

@@ -1,0 +1,21 @@
+.. _dir_src_lib_include:
+
+
+Directory include
+=================
+
+
+|exhale_lsh| :ref:`Parent directory <dir_src_lib>` (``src/lib``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+*Directory path:* ``src/lib/include``
+
+Subdirectories
+--------------
+
+- :ref:`dir_src_lib_include_public`
+
+
+

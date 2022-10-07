@@ -1,0 +1,26 @@
+
+.. _program_listing_file_src_lib_include_public_OpenCAEPlus_OpenCAEPlus.hpp:
+
+Program Listing for File OpenCAEPlus.hpp
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_lib_include_public_OpenCAEPlus_OpenCAEPlus.hpp>` (``src/lib/include/public/OpenCAEPlus/OpenCAEPlus.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   
+   #ifndef VERSION_MAJOR
+   #define VERSION_MAJOR "0"
+   #endif
+   
+   #ifndef VERSION_MINOR
+   #define VERSION_MINOR "0"
+   #endif
+   
+   #ifndef VERSION_PATCH
+   #define VERSION_PATCH "0"
+   #endif
+   
+   void print_version();

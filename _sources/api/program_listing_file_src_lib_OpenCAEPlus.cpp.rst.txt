@@ -1,0 +1,20 @@
+
+.. _program_listing_file_src_lib_OpenCAEPlus.cpp:
+
+Program Listing for File OpenCAEPlus.cpp
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_lib_OpenCAEPlus.cpp>` (``src/lib/OpenCAEPlus.cpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "OpenCAEPlus/OpenCAEPlus.hpp"
+   #include <iostream>
+   using namespace std;
+   
+   void print_version() {
+     cout << "The current version is :" << endl;
+     cout << VERSION_MAJOR << "." << VERSION_MINOR << "." << VERSION_PATCH << endl;
+   }
