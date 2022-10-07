@@ -6,3 +6,9 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 add_subdirectory(external)
 add_subdirectory(src)
+
+
+if(ENABLE_TEST_UNIT OR ENABLE_TEST_BENCHMARK)
+    include(CTest)
+    add_subdirectory(tests)
+endif()

@@ -5,7 +5,6 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
 endif()
 
 find_package(FASP)
-
 if(FASP_FOUND)
   include_directories(${FASP_INCLUDE_DIRS})
   add_definitions(-D__SOLVER_FASP__)
@@ -19,3 +18,13 @@ else(FASP_FOUND)
                        GIT_REPOSITORY git@github.com:FaspDevTeam/faspsolver.git)
   FetchContent_MakeAvailable(fasp)
 endif(FASP_FOUND)
+
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG release-1.12.1)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt
+    ON
+    CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
