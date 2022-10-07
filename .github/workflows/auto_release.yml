@@ -13,10 +13,4 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           draft: true
-          files: |
-            CMakeLists.txt
-            CMakePresets.json
-            src/**
-            examples/**
-            external/**
-            cmake/**
+          # files: false
