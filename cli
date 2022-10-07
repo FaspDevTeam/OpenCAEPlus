@@ -38,6 +38,25 @@ Example:
 EOF
 }
 
+helperTest() {
+    cat <<EOF
+CLI subcommand "test" to compile and test the source codes.
+
+Usage:
+The command will automatically detect your system, you just need to tell the 
+cli which compiler, build type, target, and the testing type, either unit or benchmark
+
+    cli test -c|--compiler -b|--build -t|--target -u|--unit -m|--benchmark [-h|--help]
+
+Example:
+
+    cli test -c intel -b Debug
+    cli test -c intel -b Debug -u
+    cli test -c intel -b Debug -m -u
+
+EOF
+}
+
 helperDoc() {
     cat <<EOF
 CLI subcommand "doc" to build the documentation
@@ -99,6 +118,7 @@ build)
             ;;
         -h | --help)
             helperBuild
+            shift 1
             ;;
         --)
             echo "Using all default variables ${system}-${compiler}-${build}-${target}"
@@ -122,11 +142,7 @@ build)
     echo ${system}-${compiler}-${build}-${target}
 
     case "$system" in
-    "linux")
-        cmake --preset="${system}-${compiler}-${build}" -S "."
-        cmake --build --preset="${system}-${compiler}-${build}" --target ${target}
-        ;;
-    "mac")
+    "linux" | "mac")
         cmake --preset="${system}-${compiler}-${build}" -S "."
         cmake --build --preset="${system}-${compiler}-${build}" --target ${target}
         ;;
@@ -139,6 +155,89 @@ build)
     *)
         echo "System $system not supported"
         helperBuild
+        ;;
+    esac
+
+    ;;
+
+test)
+    unit_test=0
+    benchmark=0
+    args=""
+    echo "Test the program"
+    shift
+
+    OPT=$(getopt -o t:c:b:hum --long target:,compiler:,build:,help,unit,benchmark -n 'cli build' -- "$@")
+    eval set -- "${OPT}"
+
+    [ $# -le 1 ] && {
+        helperTest
+    }
+
+    while true; do
+        case "$1" in
+        -t | --target)
+            target="$2"
+            shift 2
+            ;;
+        -c | --compiler)
+            compiler="$2"
+            shift 2
+            ;;
+        -b | --build)
+            build="$2"
+            shift 2
+            ;;
+        -h | --help)
+            helperTest
+            shift
+            ;;
+        -u | --unit)
+            unit_test=1
+            args=args" -DENABLE_TEST_UNIT=ON"
+            shift
+            ;;
+        -m | --benchmark)
+            benchmark=1
+            args=args" -DENABLE_TEST_BENCHMARK=ON"
+            shift
+            ;;
+        --)
+            echo "Using all default variables ${system}-${compiler}-${build}-${target}"
+            break
+            ;;
+        *)
+            echo "Unknown options!"
+            helperTest
+            ;;
+        esac
+    done
+
+    if [[ ${compiler} = "intel" ]]; then
+        source /opt/intel/oneapi/setvars.sh
+        if [[ ${system} = "mac" ]]; then
+            export CC=icc
+            export CXX=icpc
+        fi
+    fi
+
+    echo ${system}-${compiler}-${build}-${target}
+
+    case "$system" in
+    "linux" | "mac")
+        cmake --preset="${system}-${compiler}-${build}" ${args} -S "."
+        cmake --build --preset="${system}-${compiler}-${build}" --target ${target}
+        ctest --preset="${system}-${compiler}-${build}"
+        ;;
+    "windows")
+        echo "Please use the cli.bat script on windows "
+        ;;
+    --)
+        break
+        ;;
+    *)
+        echo "System $system not supported"
+        helperTest
         ;;
     esac
 
@@ -163,6 +262,7 @@ doc)
             ;;
         -h | --help)
             helperDoc
+            shift
             ;;
         --)
             break
