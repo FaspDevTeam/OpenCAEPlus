@@ -7,8 +7,7 @@ env:
     CI: false
 jobs:
   tagged-release:
-    name: "Tagged Release"
-      runs-on: [self-hosted, Linux]
+    runs-on: [self-hosted, Linux]
     steps:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
