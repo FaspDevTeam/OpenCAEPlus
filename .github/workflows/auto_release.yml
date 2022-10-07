@@ -1,0 +1,23 @@
+name: "Release on tag"
+on:
+  push:
+    tags:
+      - "v*"
+env:
+    CI: false
+jobs:
+  tagged-release:
+    name: "Tagged Release"
+      runs-on: [self-hosted, Linux]
+    steps:
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          draft: true
+          files: |
+            CMakeLists.txt
+            CMakePresets.json
+            src/**
+            examples/**
+            external/**
+            cmake/**
