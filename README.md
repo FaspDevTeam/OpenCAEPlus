@@ -1,5 +1,11 @@
 # OpenCAEPlus
 
+[![Github pages](https://github.com/FaspDevTeam/OpenCAEPlus/actions/workflows/gh-page.yml/badge.svg)](https://github.com/FaspDevTeam/OpenCAEPlus/actions/workflows/gh-page.yml)
+
+| Build | Test |
+|:-----:|:----:|
+|[![Linux GNU Build](https://github.com/FaspDevTeam/OpenCAEPlus/actions/workflows/linux_gnu_build.yml/badge.svg)](https://github.com/FaspDevTeam/OpenCAEPlus/actions/workflows/linux_gnu_build.yml)||
+
 Welcome to the OpenCAEPlus project! The "CAEPlus" means numerical simulation with artificial intelligence. 
 
 ## Folder structure
