@@ -28,6 +28,10 @@ chmod 755 cli
 # build, check helper
 ./cli build
 ./cli build -b Debug -t all -c intel 
+# test, check helper
+./cli test
+./cli test -b Release -c gnu --unit 
+./cli test -b Release -c gnu --benchmark 
 # doc, check helper
 ./cli doc 
 ./cli doc -b web
