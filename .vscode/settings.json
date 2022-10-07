@@ -12,5 +12,11 @@
         "*.f90": "FortranFreeForm",
         "Main.C": "cpp",
         "test.C": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "Doxygen",
+        "FASP",
+        "faspsolver",
+        "peaceiris"
+    ]
 }
