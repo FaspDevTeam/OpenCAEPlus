@@ -25,6 +25,8 @@ jobs:
       pull-requests: write
     runs-on: [self-hosted, Linux]
     steps:
+      - name: Run Changelog CI
+        uses: saadmk11/changelog-ci@v1.0.0
       # Drafts your next Release notes as Pull Requests are merged into "master"
       - uses: release-drafter/release-drafter@v5
         # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
