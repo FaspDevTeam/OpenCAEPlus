@@ -12,4 +12,4 @@ Describe the way your implementation works or what design decisions you made if 
 
 Make sure you
 
-- [ ] have read the [contribution guidelines](https://github.com/FaspDevTeam/OpenCAEPlus/blob/main/CONTRIBUTING.md)
+- [ ] have read the [contribution guidelines](https://github.com/FaspDevTeam/OpenCAEPlus/blob/main/CONTRIBUTE.md)
