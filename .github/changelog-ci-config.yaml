@@ -4,7 +4,7 @@ commit_changelog: true
 comment_changelog: true
 include_unlabeled_changes: true
 unlabeled_group_title: 'Code Improvements'
-pull_request_title_regex: '.*'
+pull_request_title_regex: '^Release'
 group_config:
   - title: Bug Fixes
     labels:
