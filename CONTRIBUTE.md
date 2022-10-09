@@ -14,6 +14,9 @@ You should use a pull request to contribute your code for anything that you want
 - Your branch should have as short life time as possible ( < 2 days )
 - Learn about squash and rebase, choose between them wisely
 
+- Use the name "Release v1.0.0 (mn-dt-year)" for pull request to automatically generate the changelog.
+- Use label *bug*, *documentation*, *enhancement* if you want to include the pull request in final release log, and change log.
+
 ## Commit
 
 - commit should always be small
